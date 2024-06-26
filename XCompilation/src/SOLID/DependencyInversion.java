@@ -1,6 +1,6 @@
 package SOLID;
 
-public class DependencyInjection {
+public class DependencyInversion {
 //    Classes should depend on interfaces rather than concrete classes.
 
     interface Keyboard {}
