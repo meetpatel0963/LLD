@@ -1832,7 +1832,16 @@ public class Main {
 
 /*
 
-Creational Patterns
+SOLID Principles: 
+
+Single Responsibility Principle (SRP): A class should have only one reason to change, meaning it should have only one job or responsibility.
+Open/Closed Principle (OCP): Software entities should be open for extension but closed for modification.
+Liskov Substitution Principle (LSP): Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program.
+Interface Segregation Principle (ISP): No client should be forced to depend on methods it does not use.
+Dependency Inversion Principle (DIP): High-level modules should not depend on low-level modules; both should depend on abstractions.
+
+
+Creational Patterns: Design patterns that deal with object creation mechanisms, aiming to create objects in a manner suitable to the situation.
 
     Abstract Factory: Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
     Builder: Separates the construction of a complex object from its representation, allowing the same construction process to create different representations.
@@ -1841,7 +1850,7 @@ Creational Patterns
     Singleton: Ensures a class has only one instance and provides a global point of access to it.
     Object Pool: Manages a pool of reusable objects, minimizing the cost of creating and destroying objects.
 
-Structural Patterns
+Structural Patterns: Design patterns that deal with object composition, simplifying the design by identifying simple ways to realize relationships among entities.
 
     Adapter: Converts the interface of a class into another interface that clients expect, allowing classes to work together that couldn’t otherwise because of incompatible interfaces.
     Bridge: Decouples an abstraction from its implementation, allowing the two to vary independently.
@@ -1851,7 +1860,7 @@ Structural Patterns
     Flyweight: Reduces the cost of creating and manipulating a large number of similar objects by sharing as much data as possible.
     Proxy: Provides a surrogate or placeholder for another object to control access to it.
 
-Behavioral Patterns
+Behavioral Patterns: Design patterns that deal with object interaction and responsibility, focusing on how objects communicate and interact to achieve tasks.
 
     Chain of Responsibility: Lets multiple objects have a chance to handle a request by passing the request along a chain of handlers.
     Command: Encapsulates a request as an object, allowing parameterization of clients with different requests, queuing of requests, and logging of requests.
