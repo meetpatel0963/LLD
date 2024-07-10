@@ -1,0 +1,24 @@
+> Model
+	- Account
+	- Card: accountNumber
+	- Transaction: Account, TransactionType
+	- <<TransactionType>>: WITHDRAW, DEPOSIT
+
+> COR
+	- abstract DispenseHandler
+		- Dispenser5, Dispenser10, Dispenser20, Dispenser50, NullEffectDispenser
+
+> State
+	- <<ATMState>>
+		- insertCard, insertPIN, withdraw, deposit, checkBalance, ejectCard
+	- Concrete State classes
+
+> Service
+	- BankService: List<Account>, List<Transaction>
+		- addAccount, getAccount, checkBalance, withdraw, deposit, validateUser
+	- ATMService
+		- ATMState: NoCardState
+		- DispenseHandler
+		- Account: currentAccount
+		- amount
+		- BankService
