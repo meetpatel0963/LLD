@@ -1,0 +1,90 @@
+> model
+
+    Player
+    - id: String
+    - name: String
+    - board: Board
+    - pieces: List<Piece>
+    - hasLost():: boolean
+    - makeMove(String pieceId, Cell toCell):: void
+
+    Board
+    - rows: Integer
+    - cols: Integers
+
+----------------------------------
+
+    Piece
+    - id: String
+    - color: PieceColor
+    - type: PieceType
+    - position: Cell
+    - isKilled: boolean
+    - moveStrategy: MoveStrategy
+    - move(Cell toCell):: void
+    - validateMove(Cell toCell):: boolean
+
+    Cell
+    - x: Integer
+    - y: Integer
+    - currentPiece: Piece
+
+    <<enumeration>>
+    PieceColor
+    WHITE,BLACK
+
+    <<enumeration>>
+    PieceType
+    KING,QUEEN,ROOK,KNIGHT,BISHOP,PAWN
+
+----------------------------------
+
+    <<abstract>>
+    MoveStrategy
+    - X: List<Integer>
+    - Y: List<Integer>
+    - canMove(Cell fromCell, Cell toCell):: boolean
+
+    KingMoveStrategy
+    - canMove(Cell fromCell, Cell toCell):: boolean
+
+    QueenMoveStrategy
+    - canMove(Cell fromCell, Cell toCell):: boolean
+
+    RookMoveStrategy
+    - canMove(Cell fromCell, Cell toCell):: boolean
+
+    KnightMoveStrategy
+    - canMove(Cell fromCell, Cell toCell):: boolean
+
+    BishopMoveStrategy
+    - canMove(Cell fromCell, Cell toCell):: boolean
+
+    PawnMoveStrategy
+    - canMove(Cell fromCell, Cell toCell):: boolean
+
+----------------------------------
+
+    <<IPlayerPickingStrategy>>
+    + getFirstPlayer():: Integer
+    + getNextPlayer(int curPlayer, int totalPlayers):: Integer
+
+    DefaultPlayerPickingStrategy
+    + getFirstPlayer():: Integer
+    + getNextPlayer(int curPlayer, int totalPlayers):: Integer
+
+----------------------------------
+
+    <<IWinnerStrategy>>
+    + getWinner(List<Player> playerList):: Player
+
+    DefaultWinnerStrategy
+    + getWinner(List<Player> playerList):: Player
+
+----------------------------------
+
+    GameLoop
+    - players: List<Player>
+    - playerPickingStrategy: IPlayerPickingStrategy
+    - winnerStrategy: IWinnerStrategy
+    + start():: void
