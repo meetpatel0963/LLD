@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HashMapBasedStorage<Key, Value> implements Storage<Key, Value> {
-    Map<Key, Value> storage;
+    private final Map<Key, Value> storage;
     private final int capacity;
 
     public HashMapBasedStorage(Integer capacity) {

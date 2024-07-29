@@ -72,7 +72,7 @@ class ShapeCollection {
 // MEDIATOR PATTERN
 
 interface ATCMediator {
-	vois sendMessage(String message, Plane plane); 
+	void sendMessage(String message, Plane plane); 
 }
 
 class ATCControl implements ATCMediator {
