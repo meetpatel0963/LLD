@@ -7,8 +7,8 @@ public class DependencyInversion {
     interface Mouse {}
 
     class WiredKeyboard implements Keyboard {}
-
     class BluetoothKeyboard implements Keyboard {}
+
     class WiredMouse implements Mouse {}
     class BluetoothMouse implements Mouse {}
 
@@ -28,7 +28,7 @@ public class DependencyInversion {
         private final Keyboard keyboard;
         private final Mouse mouse;
 
-        public MacBook(WiredKeyboard wiredKeyboard, WiredMouse wiredMouse) {
+        public MacBook(Keyboard wiredKeyboard, Mouse wiredMouse) {
             this.keyboard = wiredKeyboard;
             this.mouse = wiredMouse;
         }
