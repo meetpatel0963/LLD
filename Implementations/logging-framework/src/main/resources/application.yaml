@@ -1,0 +1,5 @@
+custom-logging:
+  level: INFO
+  destinations:
+    - console
+    - file:application.log

@@ -72,7 +72,7 @@ class ShapeCollection {
 // MEDIATOR PATTERN
 
 interface ATCMediator {
-	vois sendMessage(String message, Plane plane); 
+	void sendMessage(String message, Plane plane); 
 }
 
 class ATCControl implements ATCMediator {
@@ -410,7 +410,7 @@ class NumberExpression implements Expression {
     }
 }
 
-// Terminal Expression: PlusExpression
+// Intermediate Expression: PlusExpression
 class PlusExpression implements Expression {
     private Expression left;
     private Expression right;
@@ -426,7 +426,7 @@ class PlusExpression implements Expression {
     }
 }
 
-// Terminal Expression: MinusExpression
+// Intermediate Expression: MinusExpression
 class MinusExpression implements Expression {
     private Expression left;
     private Expression right;

@@ -1,0 +1,114 @@
+
+Features:
+    - Users and profiles
+    - Connections
+    - Messaging
+    - Job Posting
+    - Notifications
+
+MessageHandler
+    + sendMessage(Message message):: void
+
+<<Observer>>
+    + update(Message message):: void
+
+NotificationHandler -> implements Observer
+    + update(Message message):: void
+    + sendNotification(Message message):: void
+
+<<abstract>>
+Observable/Subject
+    - observers: List<Observer>
+    + addObserver(Observer observer):: void
+    + removeObserver(Observer observer):: void
+    + notifyObservers(Message message): void
+
+User -> extends Observable/Subject
+    - id: String
+    - username: String
+    - password: String
+    - profile: Profile
+    - connections: List<String> -> List<userId>
+    - sentConnectionRequests: List<ConnectionRequest>
+    - receivedConnectionRequests: List<ConnectionRequest>
+    - jobApplications: List<JobApplication>
+    - inbox: Inbox
+    - chatMediator: ChatMediator
+    - connectionsMediator: ConnectionsMediator
+    + sendMessage(User toUser, String message):: void
+    + receiveMessage(Message message):: void
+    + sendConnectionRequest(User toUser):: void
+    + receiveConnectionRequest(ConnectionRequest connectionRequest):: void
+
+ChatMediator
+    + sendMessage(User fromUser, User toUser, String message):: void
+    + receiveMessage(Message message):: void
+
+ConnectionsMediator
+    + sendConnectionRequest(User fromUser, User toUser):: void
+    + receiveConnectionRequest(ConnectionRequest connectionRequest):: void
+
+Inbox
+    - id: String
+    - chats: Map<String, List<Message>> -> <userId, messages>
+
+Message:
+    - id: String
+    - message: String
+    - timestamp: LocalDateTime
+
+ConnectionRequest:
+    - id: String
+    - toUserId: String
+    - status: ConnectionRequestStatus
+
+ConnectionRequestStatus
+    PENDING, ACCEPTED, DECLINED
+
+Profile
+    - id: String
+    - picture: Image
+    - headline: String
+    - summary: String
+    - experiences: List<Experience>
+    - education: List<Education>
+    - skills: List<Skill>
+
+Experience
+    - id: String
+    - organization: String
+    - role: String
+    - description: String
+    - from: LocalDate
+    - to: LocalDate
+
+Education
+    - id: String
+    - institute: String
+    - degree: String
+    - major: String
+    - from: LocalDate
+    - to: LocalDate
+
+Skill
+    - id: String
+    - name: String
+
+JobPosting
+    - id: String
+    - title: String
+    - description: String
+    - requirements: String
+    - location: String
+    - employerId: String -> userId
+    - postedAt: LocalDateTime
+
+JobApplication
+    - id: String
+    - applicantId: String -> userId
+    - jobId: String
+    - timestamp: LocalDateTime
+    - status: JobApplicationStatus
+
+JobApplicationStatus
+    UNDER_REVIEW, SHORTLISTED, INTERVIEW_SCHEDULED, INTERVIEWED, OFFERED, REJECTED, WITHDRAWN

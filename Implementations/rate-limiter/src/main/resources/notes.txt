@@ -1,0 +1,19 @@
+TokenBucket
+	- max capacity, refill rate, time unit, current #tokens
+	- scheduler, startRefilling(), refill()
+
+LeakyBucket
+	- leak rate, time unit, queue
+	- scheduler, startLeaking(), leak()
+
+FixedWindowCounter
+	- max requests, window size (in millis), window start (in millis), requests count
+	- tryRequest
+
+SlidingWindowLog
+	- max requests, window size (in millis), queue<TimeStamp>
+	- tryRequest()
+
+SlidingWindowCounter
+	- max requests, window size (in millis), window start (in millis), prev window request count, cur window request count
+	- tryRequest()
