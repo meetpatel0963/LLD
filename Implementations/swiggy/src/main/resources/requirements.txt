@@ -1,0 +1,10 @@
+> Requirements
+
+    The food delivery service should allow customers to browse restaurants, view menus, and place orders.
+    Restaurants should be able to manage their menus, prices, and availability.
+    Delivery agents should be able to accept and fulfill orders.
+    The system should handle order tracking and status updates.
+    The system should support multiple payment methods.
+    The system should handle concurrent orders and ensure data consistency.
+    The system should be scalable and handle a high volume of orders.
+    The system should provide real-time notifications to customers, restaurants, and delivery agents.

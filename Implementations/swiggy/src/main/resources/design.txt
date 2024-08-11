@@ -1,0 +1,159 @@
+
+CatalogService
+    - restaurants: Map<String, Restaurant>
+    AddRestaurant
+    RemoveRestaurant
+    AddMenuItemToRestaurant
+    UpdateMenuItemForRestaurant
+    RemoveMenuItemForRestaurant
+    GetRestaurants
+    GetMenuItemsForRestaurant
+
+UserService
+    - users: Map<String, User>
+    AddUser
+    UpdateUser
+    RemoveUser
+    AddMenuItemToCart
+    RemoveMenuItemFromCart
+    GetCartForUser
+    AddPaymentMethodForUser
+    GetPaymentMethodsForUser
+    AddAddressForUser
+    RemoveAddressForUser
+
+OrderService
+    - orders: Map<String, Order>
+    PlaceOrder
+    GetOrderStatus
+    GetOrderLocation
+
+PaymentService
+    - transactions: Map<String, Transaction>
+    HandlePayment
+
+DeliveryAgentService
+    - deliveryAgents: List<DeliveryAgent>
+    AssignDeliveryAgent
+
+DeliveryFacade
+    PaymentService
+    OrderService
+    DeliveryAgentService
+
+----------------------------------------------------------------------
+
+PaymentStrategy
+    + handlePayment(Order order):: boolean
+
+UPIPaymentStrategy implements PaymentStrategy
+    - upiId: String
+    + handlePayment(Order order):: boolean
+
+CashOnDeliveryPaymentStrategy implements PaymentStrategy
+    + handlePayment(Order order):: boolean
+
+SodexoPaymentStrategy
+    - accountNumber: String
+    - name: String
+    - expiryDate: LocalDate
+    + handlePayment(Order order):: boolean
+
+----------------------------------------------------------------------
+
+<<Observer>>
+    + update(String message):: void
+
+<<abstract>>
+Observable/Subject
+    - observers: List<Observer>
+    + registerObserver(Observer observer):: void
+    + removeObserver(Observer observer):: void
+    + notifyObservers(String message):: void
+
+----------------------------------------------------------------------
+
+Cart
+    - id: String
+    - userId: String
+    - menuItems: List<MenuItem>
+
+User implements Observer
+    - id: String
+    - name: String
+    - email: String
+    - contact: String
+    - cart: Cart
+    - paymentMethods: List<PaymentStrategy>
+    - addresses: List<Address>
+
+Address
+    - id: String
+    - name: String
+    - flatNo: String
+    - building: String
+    - area: String
+    - pinCode: int
+
+Restaurant implements Observer
+    - id: String
+    - name: String
+    - address: String
+    - menu: Menu
+    - rating: float
+
+Menu
+    - id: String
+    - restaurantId: String
+    - menuItems: List<MenuItem>
+
+MenuItem
+    - id: String
+    - name: String
+    - description: String
+    - price: int
+    - available: boolean
+    - rating: float
+    - menuId: String
+
+Order implements Observable
+    - id: String
+    - userId: String
+    - restaurantId: String
+    - orderItems: List<OrderItem>
+    - status: OrderStatus
+    - deliveryAgentId: String
+    - deliveryAddress: String
+    - amount: int
+    - timestamp: LocalDateTime
+
+OrderItem
+    - id: String
+    - menuItem: MenuItem
+    - quantity: int
+
+OrderStatus
+    PENDING, CONFIRMED, PREPARING, OUT_FOR_DELIVERY, DELIVERED, CANCELLED
+
+DeliveryAgent implements Observer
+    - id: String
+    - name: String
+    - contact: String
+    - available: boolean
+    - location: Location
+    - rating: float
+
+Location
+    - longitude: double
+    - latitude: double
+
+Transaction implements Observable
+    - id: String
+    - userId: String
+    - restaurantId: String
+    - amount: int
+    - status: TransactionStatus
+    - paymentMethod: PaymentStrategy
+
+TransactionStatus
+    PENDING, COMPLETED, FAILED
