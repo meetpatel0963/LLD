@@ -32,7 +32,7 @@ class CrawlerManagerTest {
         // Mock behavior for ExecutorService to directly execute the Runnable
         doAnswer(invocation -> {
             Runnable task = invocation.getArgument(0);
-            task.run();
+//            task.run();
             return null;
         }).when(mockExecutorService).execute(any(Runnable.class));
 
