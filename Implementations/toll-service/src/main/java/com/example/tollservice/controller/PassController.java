@@ -27,17 +27,17 @@ public class PassController {
     @PostMapping(Routes.ISSUE_PASS)
     public ResponseEntity<Pass> issuePass(
             @RequestParam UUID vehicleId,
+            @RequestParam UUID tollBoothId,
             @RequestParam PassType type) {
-        Pass pass = passService.issuePass(vehicleId, type);
+        Pass pass = passService.issuePass(vehicleId, tollBoothId, type);
         return ResponseEntity.ok(pass);
     }
 
     // Endpoint to validate a pass
     @GetMapping(Routes.VALIDATE_PASS)
     public ResponseEntity<Boolean> validatePass(
-            @RequestParam UUID passId,
-            @RequestParam UUID tollBoothId) {
-        boolean isValid = passService.validatePass(passId, tollBoothId);
+            @RequestParam UUID passId) {
+        boolean isValid = passService.validatePass(passId);
         return ResponseEntity.ok(isValid);
     }
 
