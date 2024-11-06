@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "269206f5-40ae-4378-877d-7ae4a2e68d22",
+		"name": "Toll Service API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12350812"
+	},
+	"item": [
+		{
+			"name": "TollPlaza",
+			"item": [
+				{
+					"name": "Create Toll Plaza",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/plazas?location=Main Street Plaza",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plazas"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "Main Street Plaza"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Toll Booth",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/plazas/4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180/booths",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plazas",
+								"4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180",
+								"booths"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Toll Booths by Plaza",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plazas/4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180/booths",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plazas",
+								"4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180",
+								"booths"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Toll Plaza by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plazas/4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plazas",
+								"4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Analytics",
+			"item": [
+				{
+					"name": "Total Collection for Plaza",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/analytics/collection?tollPlazaId=4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180&date=2024-11-02",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"analytics",
+								"collection"
+							],
+							"query": [
+								{
+									"key": "tollPlazaId",
+									"value": "4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180"
+								},
+								{
+									"key": "date",
+									"value": "2024-11-02"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Vehicles for Plaza",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/analytics/vehicles?tollPlazaId=4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180&date=2024-11-02",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"analytics",
+								"vehicles"
+							],
+							"query": [
+								{
+									"key": "tollPlazaId",
+									"value": "4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180"
+								},
+								{
+									"key": "date",
+									"value": "2024-11-02"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Passes Issued for Plaza",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/analytics/passes?tollPlazaId=4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180&date=2024-11-02",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"analytics",
+								"passes"
+							],
+							"query": [
+								{
+									"key": "tollPlazaId",
+									"value": "4cdda235-ad9a-4d40-bcd2-bf5f4c9f7180"
+								},
+								{
+									"key": "date",
+									"value": "2024-11-02"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pass",
+			"item": [
+				{
+					"name": "Issue Pass",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/passes/issue?vehicleId=dd513831-3751-4bf2-8253-47f217fb2c99&type=WEEKLY",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"passes",
+								"issue"
+							],
+							"query": [
+								{
+									"key": "vehicleId",
+									"value": "dd513831-3751-4bf2-8253-47f217fb2c99"
+								},
+								{
+									"key": "type",
+									"value": "WEEKLY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Pass",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/passes/validate?passId=3b7a62af-2693-4824-9468-9df9ef67eb9a&tollBoothId=507375fe-5924-4aca-badb-90580403e071",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"passes",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "passId",
+									"value": "3b7a62af-2693-4824-9468-9df9ef67eb9a"
+								},
+								{
+									"key": "tollBoothId",
+									"value": "507375fe-5924-4aca-badb-90580403e071"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pass by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/passes/3b7a62af-2693-4824-9468-9df9ef67eb9a",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"passes",
+								"3b7a62af-2693-4824-9468-9df9ef67eb9a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Record Transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/transactions?vehicleId=dd513831-3751-4bf2-8253-47f217fb2c99&tollBoothId=507375fe-5924-4aca-badb-90580403e071&passId=3b7a62af-2693-4824-9468-9df9ef67eb9a",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "vehicleId",
+									"value": "dd513831-3751-4bf2-8253-47f217fb2c99"
+								},
+								{
+									"key": "tollBoothId",
+									"value": "507375fe-5924-4aca-badb-90580403e071"
+								},
+								{
+									"key": "passId",
+									"value": "3b7a62af-2693-4824-9468-9df9ef67eb9a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle",
+			"item": [
+				{
+					"name": "Register Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/vehicles?type=CAR",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"vehicles"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "CAR"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicle by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/vehicles/dd513831-3751-4bf2-8253-47f217fb2c99",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"vehicles",
+								"dd513831-3751-4bf2-8253-47f217fb2c99"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/v1/toll"
+		}
+	]
+}

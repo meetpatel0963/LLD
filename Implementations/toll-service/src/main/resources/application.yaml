@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: TollService
+
+  h2:
+    console:
+      enabled: true               # Enable H2 console for web access
+      path: /h2-console           # Path to access H2 console
+
+  datasource:
+    url: jdbc:h2:mem:tollservice;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE  # In-memory database
+    driverClassName: org.h2.Driver
+    username: sa                 # Default username
+    password:                    # Default password (none for H2)
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect  # Use H2 dialect
+    hibernate:
+      ddl-auto: update          # Automatically update the database schema
+    show-sql: true              # Show SQL queries in console
+    properties:
+      hibernate:
+        format_sql: true         # Format SQL output
+
+pass:
+  oneWay:
+    price: 15.00
+    validity: PT1H # Valid for 1 hour (ISO-8601 duration format)
+  roundTrip:
+    price: 25.00
+    validity: PT2H # Valid for 2 hours
+  daily:
+    price: 50.00
+    validity: P1D # Valid for 1 day
+  weekly:
+    price: 200.00
+    validity: P7D # Valid for 7 days

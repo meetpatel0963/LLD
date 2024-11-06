@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutorService;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 
 class CrawlerManagerTest {
@@ -29,12 +30,13 @@ class CrawlerManagerTest {
         mockPageParser = mock(PageParser.class);
         mockStorageService = mock(StorageService.class);
 
-        // Mock behavior for ExecutorService to directly execute the Runnable
-        doAnswer(invocation -> {
-            Runnable task = invocation.getArgument(0);
+//        doAnswer(invocation -> {
+//            Runnable task = invocation.getArgument(0);
 //            task.run();
-            return null;
-        }).when(mockExecutorService).execute(any(Runnable.class));
+//            return null;
+//        }).when(mockExecutorService).execute(any(Runnable.class));
+
+        doNothing().when(mockExecutorService).execute(any(Runnable.class));
 
         // Initialize CrawlerManager with mocked dependencies
         crawlerManager = new CrawlerManager(
